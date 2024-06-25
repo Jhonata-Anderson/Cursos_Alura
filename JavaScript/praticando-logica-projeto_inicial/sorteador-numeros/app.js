@@ -9,7 +9,21 @@ function sortear(){
     for (let i = 0; i < quantidade; i++) {
         numero = obterNumeroAleatorio(de, ate);
         while (sorteados.includes(numero)) {
-            numero = obterNumeroAleatorio(de, ate);
+            if (de >= ate) {
+                alert('O número minimo inserido não pode ser maior que o máximo de número solicitado!')
+                document.getElementById('quantidade').value = '';
+                document.getElementById('de').value = '';
+                document.getElementById('ate').value = '';
+                return;
+            } else if (quantidade > ate){
+                alert('A quantidade inserida não pode ser maior que o máximo de número solicitado!')
+                document.getElementById('quantidade').value = '';
+                document.getElementById('de').value = '';
+                document.getElementById('ate').value = '';
+                return;
+            } else {
+                numero = obterNumeroAleatorio(de, ate);
+            }
         }
         sorteados.push(numero);
     }
